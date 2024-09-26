@@ -1,1 +1,55 @@
-echo "<!DOCTYPE html><html><body><h1>Hello LTI!</h1></body></html>" > index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTI User Info</title>
+    <script>
+        // Configuração CORS para permitir requisições do Brightspace
+        function setCORS() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', window.location.href, true);
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+            xhr.setRequestHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
+            xhr.send();
+        }
+
+        window.onload = function() {
+            setCORS();  // Configura o CORS ao carregar a página
+
+            // Extraindo parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log("URL Params:", urlParams.toString());  // Exibe os parâmetros no console para verificar
+            
+            const username = urlParams.get('User.username');
+            const course = urlParams.get('CourseTemplate.title');
+            const date = urlParams.get('ResourceLink.available.startDateTime');
+
+            if (username) {
+                document.getElementById('username').textContent = `Nome do aluno: ${username}`;
+            } else {
+                document.getElementById('username').textContent = "Nome do aluno não encontrado.";
+            }
+
+            if (course) {
+                document.getElementById('course').textContent = `Curso: ${course}`;
+            } else {
+                document.getElementById('course').textContent = "Nome do curso não encontrado.";
+            }
+
+            if (date) {
+                document.getElementById('date').textContent = `Data de início: ${date}`;
+            } else {
+                document.getElementById('date').textContent = "Data de início não encontrada.";
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Informações LTI</h1>
+    <p id="username">Carregando nome do aluno...</p>
+    <p id="course">Carregando nome do curso...</p>
+    <p id="date">Carregando data de início...</p>
+</body>
+</html>
