@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,29 @@
     <script>
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
+            console.log("URL Params:", urlParams.toString());  // Exibir os parâmetros no console para verificar
+            
             const username = urlParams.get('User.username');
             const course = urlParams.get('CourseTemplate.title');
             const date = urlParams.get('ResourceLink.available.startDateTime');
 
-            document.getElementById('username').textContent = `Nome do aluno: ${username}`;
-            document.getElementById('course').textContent = `Curso: ${course}`;
-            document.getElementById('date').textContent = `Data de início: ${date}`;
+            if (username) {
+                document.getElementById('username').textContent = `Nome do aluno: ${username}`;
+            } else {
+                document.getElementById('username').textContent = "Nome do aluno não encontrado.";
+            }
+
+            if (course) {
+                document.getElementById('course').textContent = `Curso: ${course}`;
+            } else {
+                document.getElementById('course').textContent = "Nome do curso não encontrado.";
+            }
+
+            if (date) {
+                document.getElementById('date').textContent = `Data de início: ${date}`;
+            } else {
+                document.getElementById('date').textContent = "Data de início não encontrada.";
+            }
         };
     </script>
 </head>
