@@ -1,1 +1,26 @@
-echo "<!DOCTYPE html><html><body><h1>Hello LTI!</h1></body></html>" > index.html
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTI User Info</title>
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('User.username');
+            const course = urlParams.get('CourseTemplate.title');
+            const date = urlParams.get('ResourceLink.available.startDateTime');
+
+            document.getElementById('username').textContent = `Nome do aluno: ${username}`;
+            document.getElementById('course').textContent = `Curso: ${course}`;
+            document.getElementById('date').textContent = `Data de início: ${date}`;
+        };
+    </script>
+</head>
+<body>
+    <h1>Informações LTI</h1>
+    <p id="username">Carregando nome do aluno...</p>
+    <p id="course">Carregando nome do curso...</p>
+    <p id="date">Carregando data de início...</p>
+</body>
+</html>
