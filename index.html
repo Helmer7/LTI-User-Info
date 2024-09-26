@@ -5,10 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTI User Info</title>
     <script>
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            console.log("URL Params:", urlParams.toString());  // Exibir os parâmetros no console para verificar
+        // Configuração CORS para permitir requisições do Brightspace
+        function setCORS() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', window.location.href, true);
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+            xhr.setRequestHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
+            xhr.send();
+        }
 
+        window.onload = function() {
+            setCORS();  // Configura o CORS ao carregar a página
+
+            // Extraindo parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log("URL Params:", urlParams.toString());  // Exibe os parâmetros no console para verificar
+            
             const username = urlParams.get('User.username');
             const course = urlParams.get('CourseTemplate.title');
             const date = urlParams.get('ResourceLink.available.startDateTime');
