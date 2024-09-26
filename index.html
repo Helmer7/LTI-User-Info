@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTI User Info</title>
     <script>
-        // Configuração CORS para permitir requisições do Brightspace
+        
+         const clientId = process.env.CLIENT_ID;
+         const jwksUrl = process.env.BRIGHTSPACE_JWKS_URL;
+         const tokenUrl = process.env.OAUTH2_TOKEN_URL;
+         const authUrl = process.env.OPENID_CONNECT_AUTH_URL;
+         const audience = process.env.OAUTH2_AUDIENCE;
+         const issuer = process.env.ISSUER;
+
+
+
         function setCORS() {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', window.location.href, true);
@@ -16,11 +25,11 @@
         }
 
         window.onload = function() {
-            setCORS();  // Configura o CORS ao carregar a página
+            setCORS();  
 
-            // Extraindo parâmetros da URL
+            
             const urlParams = new URLSearchParams(window.location.search);
-            console.log("URL Params:", urlParams.toString());  // Exibe os parâmetros no console para verificar
+            console.log("URL Params:", urlParams.toString());  
             
             const username = urlParams.get('User.username');
             const course = urlParams.get('CourseTemplate.title');
