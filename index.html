@@ -6,15 +6,6 @@
     <title>LTI User Info</title>
     <script>
         
-         const clientId = process.env.CLIENT_ID;
-         const jwksUrl = process.env.BRIGHTSPACE_JWKS_URL;
-         const tokenUrl = process.env.OAUTH2_TOKEN_URL;
-         const authUrl = process.env.OPENID_CONNECT_AUTH_URL;
-         const audience = process.env.OAUTH2_AUDIENCE;
-         const issuer = process.env.ISSUER;
-
-
-
         function setCORS() {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', window.location.href, true);
