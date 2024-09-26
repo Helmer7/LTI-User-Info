@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-Access-Control-Allow-Origin: *
-X-Frame-Options: ALLOWALL
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +8,7 @@ X-Frame-Options: ALLOWALL
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             console.log("URL Params:", urlParams.toString());  // Exibir os parâmetros no console para verificar
-            
+
             const username = urlParams.get('User.username');
             const course = urlParams.get('CourseTemplate.title');
             const date = urlParams.get('ResourceLink.available.startDateTime');
