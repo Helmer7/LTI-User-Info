@@ -5,27 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTI User Info</title>
     <script>
-        async function fetchUserInfo() {
-            try {
-                const response = await fetch('/api/test', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer ' + localStorage.getItem('token') // Pegue o token armazenado
-                    }
-                });
-                const data = await response.json();
-                console.log('Autenticado:', data);
-            } catch (error) {
-                console.error('Erro ao buscar dados do usuário:', error);
-            }
-        }
-
         window.onload = function() {
-            fetchUserInfo();
-
             const urlParams = new URLSearchParams(window.location.search);
-            console.log("URL Params:", urlParams.toString());
-
+            console.log("URL Params:", urlParams.toString());  
+            
             const username = urlParams.get('User.username');
             const course = urlParams.get('CourseTemplate.title');
             const date = urlParams.get('ResourceLink.available.startDateTime');
@@ -49,14 +32,6 @@
             }
         };
     </script>
-
-    <script> 
-    
-    X-Frame-Options: ALLOW-FROM https://digitalskills.brightspace.com
-
-        
-    </script>
-
 </head>
 <body>
     <h1>Informações LTI</h1>
