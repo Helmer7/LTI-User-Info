@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTI User Info</title>
     <script>
-        
-        function setCORS() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', window.location.href, true);
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-            xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
-            xhr.setRequestHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
-            xhr.send();
+        async function fetchUserInfo() {
+            try {
+                const response = await fetch('/api/test', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token') // Pegue o token armazenado
+                    }
+                });
+                const data = await response.json();
+                console.log('Autenticado:', data);
+            } catch (error) {
+                console.error('Erro ao buscar dados do usuário:', error);
+            }
         }
 
         window.onload = function() {
-            setCORS();  
+            fetchUserInfo();
 
-            
             const urlParams = new URLSearchParams(window.location.search);
-            console.log("URL Params:", urlParams.toString());  
-            
+            console.log("URL Params:", urlParams.toString());
+
             const username = urlParams.get('User.username');
             const course = urlParams.get('CourseTemplate.title');
             const date = urlParams.get('ResourceLink.available.startDateTime');
