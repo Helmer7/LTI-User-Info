@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*" // Você pode colocar aqui o domínio exato, como "https://digitalskills.brightspace.com" se quiser limitar o acesso
+          "value": "https://digitalskills.brightspace.com" 
         },
         {
           "key": "Access-Control-Allow-Methods",
