@@ -4,21 +4,20 @@ const app = express();
 
 
 app.use(cors({
-    origin: ['https://digitalskills.brightspace.com'], 
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin: 'https://digitalskills.brightspace.com', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'] 
 }));
 
 
 app.get('/api/test', (req, res) => {
-    res.json({ message: 'GET request received' });
+    res.json({ message: 'GET request realizado com sucesso' });
 });
 
 
 app.post('/api/test', (req, res) => {
-    res.json({ message: 'POST request received' });
+    res.json({ message: 'POST request realizado com sucesso' });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+
+module.exports = app;
