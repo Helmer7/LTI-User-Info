@@ -18,13 +18,8 @@
         {
           "key": "X-Frame-Options",
           "value": "ALLOW-FROM https://digitalskills.brightspace.com"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "frame-ancestors 'self' https://digitalskills.brightspace.com"
         }
       ]
     }
   ]
 }
-
