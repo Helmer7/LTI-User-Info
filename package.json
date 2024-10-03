@@ -1,5 +1,5 @@
 {
-  "name": "lti-user-info-1",
+  "name": "LTI-user-info",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
